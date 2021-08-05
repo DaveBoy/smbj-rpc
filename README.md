@@ -1,7 +1,7 @@
 # SMBJ-RPC
 
 
-# Update SMBJ to 0.11.1 and output a jar file.
+# Update SMBJ to 0.11.1 and output a jar file.(Just update the new Api, no more other changes)
 if you use jar file,you should add this dependencies:
 ```groovy
     implementation 'commons-io:commons-io:2.11.0'

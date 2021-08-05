@@ -29,6 +29,7 @@ import com.hierynomus.mssmb2.SMB2FileId;
 import com.hierynomus.mssmb2.SMB2ImpersonationLevel;
 import com.hierynomus.mssmb2.SMB2ShareAccess;
 import com.hierynomus.mssmb2.messages.*;
+import com.hierynomus.smbj.SmbConfig;
 import com.hierynomus.smbj.common.SMBRuntimeException;
 import com.hierynomus.smbj.common.SmbPath;
 import com.hierynomus.smbj.io.ArrayByteChunkProvider;
@@ -47,8 +48,8 @@ public class NamedPipe extends SMB2SessionMessage implements Closeable {
     private final int readBufferSize;
     private final int writeBufferSize;
 
-    public NamedPipe(final Session session, final PipeShare share, final String name) throws IOException {
-        super(session);
+    public NamedPipe(final Session session, final PipeShare share, final String name, SmbConfig config) throws IOException {
+        super(session,config);
 
         this.share = share;
 
@@ -56,9 +57,9 @@ public class NamedPipe extends SMB2SessionMessage implements Closeable {
         final SMB2CreateResponse createResponse = sendAndRead(createRequest, EnumSet.of(NtStatus.STATUS_SUCCESS));
 
         fileID = createResponse.getFileId();
-        transactBufferSize = Math.min(session.getConnection().getConfig().getTransactBufferSize(), session.getConnection().getNegotiatedProtocol().getMaxTransactSize());
-        readBufferSize = Math.min(session.getConnection().getConfig().getReadBufferSize(), session.getConnection().getNegotiatedProtocol().getMaxReadSize());
-        writeBufferSize = Math.min(session.getConnection().getConfig().getWriteBufferSize(), session.getConnection().getNegotiatedProtocol().getMaxWriteSize());
+        transactBufferSize = Math.min(config.getTransactBufferSize(), session.getConnection().getNegotiatedProtocol().getMaxTransactSize());
+        readBufferSize = Math.min(config.getReadBufferSize(), session.getConnection().getNegotiatedProtocol().getMaxReadSize());
+        writeBufferSize = Math.min(config.getWriteBufferSize(), session.getConnection().getNegotiatedProtocol().getMaxWriteSize());
     }
 
     public byte[] transact(final byte[] inBuffer) throws IOException {

@@ -1,5 +1,17 @@
 # SMBJ-RPC
 
+
+# Update SMBJ to 0.11.1 and output a jar file.
+if you use jar file,you should add this dependencies:
+```groovy
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation files('libs/smbj-rpc-0.11.1.jar')
+    implementation 'org.apache.commons:commons-lang3:3.4'
+    implementation 'com.hierynomus:smbj:0.11.1'
+    implementation 'com.google.guava:guava:18.0'
+```
+
+
  [![Build Status](https://api.travis-ci.org/rapid7/smbj-rpc.svg?branch=master)](https://travis-ci.org/rapid7/smbj-rpc) [![Maven Central](https://img.shields.io/maven-central/v/com.rapid7.client/dcerpc.svg)](https://search.maven.org/artifact/com.rapid7.client/dcerpc) [![Javadocs](https://www.javadoc.io/badge/com.rapid7.client/dcerpc.svg)](https://www.javadoc.io/doc/com.rapid7.client/dcerpc)
 
 DCE-RPC implementation capable of using SMBv2 via SMBJ to invoke remote procedure calls (RPC) over the IPC$ named pipe.

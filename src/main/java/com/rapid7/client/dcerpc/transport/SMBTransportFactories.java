@@ -23,6 +23,7 @@ import java.io.InterruptedIOException;
 import java.util.LinkedList;
 import java.util.Queue;
 import com.hierynomus.protocol.transport.TransportException;
+import com.hierynomus.smbj.SmbConfig;
 import com.hierynomus.smbj.common.SMBException;
 import com.hierynomus.smbj.session.Session;
 import com.hierynomus.smbj.share.PipeShare;
@@ -51,11 +52,11 @@ public enum SMBTransportFactories {
         this.transferSyntax = transferSyntax;
     }
 
-    public RPCTransport getTransport(final Session session) throws IOException {
+    public RPCTransport getTransport(final Session session, SmbConfig config) throws IOException {
         final Share share = session.connectShare("IPC$");
         if (share instanceof PipeShare) {
             final PipeShare pipeShare = (PipeShare) share;
-            final NamedPipe namedPipe = openAndHandleStatusPipeNotAvailable(session, pipeShare);
+            final NamedPipe namedPipe = openAndHandleStatusPipeNotAvailable(session, pipeShare,config);
             final SMBTransport transport = new SMBTransport(namedPipe);
 
             transport.bind(abstractSyntax, transferSyntax);
@@ -66,12 +67,12 @@ public enum SMBTransportFactories {
         throw new TransportException(String.format("%s not a named pipe.", name));
     }
 
-    private NamedPipe openAndHandleStatusPipeNotAvailable(final Session session, final PipeShare pipeShare)
+    private NamedPipe openAndHandleStatusPipeNotAvailable(final Session session, final PipeShare pipeShare,SmbConfig config)
             throws IOException {
         final Queue<SMB2Exception> exceptions = new LinkedList<>();
         for (int retry = -1; retry < STATUS_PIPE_NOT_AVAILABLE_RETRIES; retry++) {
             try {
-                return openPipe(session, pipeShare);
+                return openPipe(session, pipeShare,config);
             } catch (final SMB2Exception exception) {
                 exceptions.offer(exception);
                 switch (exception.getStatus()) {
@@ -95,7 +96,7 @@ public enum SMBTransportFactories {
         throw new SMBException("Unknown error when opening pipe: " + pipeShare.getSmbPath().toString());
     }
 
-    private NamedPipe openPipe(final Session session, final PipeShare pipeShare) throws IOException {
-        return new NamedPipe(session, pipeShare, name);
+    private NamedPipe openPipe(final Session session, final PipeShare pipeShare,SmbConfig config) throws IOException {
+        return new NamedPipe(session, pipeShare, name,config);
     }
 }

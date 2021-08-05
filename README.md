@@ -7,7 +7,9 @@ if you use jar file,you should add this dependencies:
     implementation 'commons-io:commons-io:2.11.0'
     implementation files('libs/smbj-rpc-0.11.1.jar')
     implementation 'org.apache.commons:commons-lang3:3.4'
-    implementation 'com.hierynomus:smbj:0.11.1'
+    implementation('com.hierynomus:smbj:0.11.1') {
+        exclude group: 'org.slf4j'
+    }
     implementation 'com.google.guava:guava:18.0'
 ```
 

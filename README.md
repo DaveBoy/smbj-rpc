@@ -7,12 +7,15 @@ if you use jar file,you should add this dependencies:
     implementation 'commons-io:commons-io:2.11.0'
     implementation files('libs/smbj-rpc-0.11.1.jar')
     implementation 'org.apache.commons:commons-lang3:3.4'
-    implementation('com.hierynomus:smbj:0.11.1') {
-        exclude group: 'org.slf4j'
-    }
+    implementation 'com.hierynomus:smbj:0.11.1'
     implementation 'com.google.guava:guava:18.0'
 ```
+or use like this:
 
+```groovy
+    implementation "io.github.daveboy:smbj-rpc:0.11.1"
+```
+[maven地址](https://search.maven.org/artifact/io.github.daveboy/smbj-rpc/0.11.1/jar)
 
 [![Build Status](https://github.com/rapid7/smbj-rpc/actions/workflows/CI.yml/badge.svg)](https://github.com/rapid7/smbj-rpc/actions) [![Maven Central](https://img.shields.io/maven-central/v/com.rapid7.client/dcerpc.svg)](https://search.maven.org/artifact/com.rapid7.client/dcerpc) [![Javadocs](https://www.javadoc.io/badge/com.rapid7.client/dcerpc.svg)](https://www.javadoc.io/doc/com.rapid7.client/dcerpc)
 DCE-RPC implementation capable of using SMBv2 via SMBJ to invoke remote procedure calls (RPC) over the IPC$ named pipe.

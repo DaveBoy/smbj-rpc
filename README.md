@@ -14,8 +14,7 @@ if you use jar file,you should add this dependencies:
 ```
 
 
- [![Build Status](https://api.travis-ci.org/rapid7/smbj-rpc.svg?branch=master)](https://travis-ci.org/rapid7/smbj-rpc) [![Maven Central](https://img.shields.io/maven-central/v/com.rapid7.client/dcerpc.svg)](https://search.maven.org/artifact/com.rapid7.client/dcerpc) [![Javadocs](https://www.javadoc.io/badge/com.rapid7.client/dcerpc.svg)](https://www.javadoc.io/doc/com.rapid7.client/dcerpc)
-
+[![Build Status](https://github.com/rapid7/smbj-rpc/actions/workflows/CI.yml/badge.svg)](https://github.com/rapid7/smbj-rpc/actions) [![Maven Central](https://img.shields.io/maven-central/v/com.rapid7.client/dcerpc.svg)](https://search.maven.org/artifact/com.rapid7.client/dcerpc) [![Javadocs](https://www.javadoc.io/badge/com.rapid7.client/dcerpc.svg)](https://www.javadoc.io/doc/com.rapid7.client/dcerpc)
 DCE-RPC implementation capable of using SMBv2 via SMBJ to invoke remote procedure calls (RPC) over the IPC$ named pipe.
 
 Partial support for the Windows Remote Registry Protocol (MS-RRP) specification (https://msdn.microsoft.com/en-us/library/cc244877.aspx).

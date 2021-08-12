@@ -12,7 +12,8 @@
       <connection>scm:git:git@github.com:rapid7/smbj-rpc.git</connection>
       <developerConnection>scm:git:git@github.com:rapid7/smbj-rpc.git</developerConnection>
       <url>https://github.com/rapid7/smbj-rpc</url>
-   </scm>
+     <tag>HEAD</tag>
+  </scm>
 
    <developers>
       <developer>
@@ -45,11 +46,11 @@
    </distributionManagement>
 
    <properties>
-      <thirdparty.commons-io.version>2.5</thirdparty.commons-io.version>
+      <thirdparty.commons-io.version>2.7</thirdparty.commons-io.version>
       <thirdparty.commons-lang3.version>3.4</thirdparty.commons-lang3.version>
       <thirdparty.guava.version>18.0</thirdparty.guava.version>
       <thirdparty.hamcrest.version>1.3</thirdparty.hamcrest.version>
-      <thirdparty.junit.version>4.12</thirdparty.junit.version>
+      <thirdparty.junit.version>4.13.1</thirdparty.junit.version>
       <thirdparty.mockito.version>1.10.19</thirdparty.mockito.version>
       <thirdparty.smbj.version>0.11.1</thirdparty.smbj.version>
       <thirdparty.testng.version>6.11</thirdparty.testng.version>
